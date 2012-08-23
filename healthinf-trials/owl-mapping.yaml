@@ -1,0 +1,24 @@
+classes:
+  Put : PuttingSomethingSomewhere
+  Pour : PouringSomethingInto
+  Grasp : GraspingSomething
+  kettle : Kettle
+  water : Water
+  milk : CowsMilk-Product
+  lemon : LemonSlice
+  sugar : Sugar
+  teabag : TeaBag
+  tea : Tea-Beverage
+  waterjug : WaterJug
+  coffeejar : CoffeeJar
+  coffee : Coffee-Beverage
+properties:
+  with : primaryObjectMoving
+  into : toLocation
+  in : toLocation
+individuals:
+  cup1 : cup1
+  cup2 : cup2
+  sweetener1 : sweetener1
+  sweetener2 : sweetener2
+

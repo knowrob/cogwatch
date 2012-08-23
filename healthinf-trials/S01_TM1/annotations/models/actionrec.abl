@@ -1,0 +1,34 @@
+// Advanced BLOG (ABL) Model
+
+
+// ***************
+// types
+// ***************
+
+Type action;
+Type object;
+Type domObjectT;
+Type domActionT;
+
+// ***************
+// domains
+// ***************
+
+guaranteed domObjectT CowsMilk-Product, Sweetener1, Sugar, LemonSlice, TeaBag, Water;
+guaranteed domActionT PouringSomethingInto, PuttingSomethingSomewhere;
+
+
+// *************************
+// predicate declarations
+// *************************
+
+// action
+random domActionT actionT(action);
+
+// object
+random domObjectT objectT(object);
+
+// Relations
+random boolean precedes(action, action);
+random boolean objectActedOn(action, object);
+RelationKey objectActedOn(a0, _);

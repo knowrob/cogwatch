@@ -1,0 +1,22 @@
+fragments actionrec.learnt.pmml;
+
+type domObjectT;
+type action;
+type object;
+type domActionT;
+
+guaranteed domObjectT CowsMilk-Product, Sugar, LemonSlice, Sweetener1, TeaBag, Water;
+guaranteed domActionT PouringSomethingInto, PuttingSomethingSomewhere;
+
+random domObjectT objectT(object);
+random Boolean precedes(action, action);
+random Boolean objectActedOn(action, object);
+random domActionT actionT(action);
+
+relationKey objectActedOn(a0,_);
+
+objectT(o1) ~ TabularCPD[[0.1,0.1,0.3,0.1,0.1,0.3]]();
+actionT(a1) ~ TabularCPD[[0.3,0.7]]();
+precedes(a1,a2) ~ TabularCPD[](actionT(a1), objectActedOn(a1,o1), actionT(a2), objectActedOn(a2,o2));
+objectActedOn(a1,o1) ~ TabularCPD[[0.0,1.0],[0.14285714285714285,0.8571428571428571],[0.0,1.0],[0.14285714285714285,0.8571428571428571],[0.0,1.0],[0.14285714285714285,0.8571428571428571],[0.0,1.0],[0.14285714285714285,0.8571428571428571],[0.0,1.0],[0.14285714285714285,0.8571428571428571],[0.3333333333333333,0.6666666666666666],[0.0,1.0]](objectT(o1), actionT(a1));
+precedes(a1,a2) ~ TabularCPD[]();
