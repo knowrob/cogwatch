@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+# concatenate all blogdb files of the control group to a single, large one 
+cat `find ./C* -name train.blogdb` >> train-control.blogdb
+
+# concatenate all blogdb files of the patients group to a single, large one
+cat `find ./S* -name train.blogdb` >> train-patients.blogdb
+
+# concatenate all blogdb files to a single, large one 
+cat `find . -name train.blogdb` >> train-all.blogdb
+
