@@ -1,0 +1,33 @@
+fragments actionrec.learnt.pmml;
+
+type g;
+type domGroupT;
+type e;
+type domErrorT;
+type action;
+type object;
+type domToLocation;
+type domActionT;
+type domObjActedOn;
+
+guaranteed domGroupT Patient;
+guaranteed domErrorT NoError;
+guaranteed domToLocation Kettle, Cup1, Cup2;
+guaranteed domActionT PouringSomethingInto, PuttingSomethingSomewhere;
+guaranteed domObjActedOn CowsMilk-Product, Sweetener2, Sugar, LemonSlice, Sweetener1, TeaBag, Water;
+
+random domObjActedOn objActedOn(action);
+random domErrorT errorT(e);
+random Boolean precedes(action, action, g, e);
+random domGroupT groupT(g);
+random domToLocation toLocation(action);
+random domActionT actionT(action);
+
+
+objActedOn(a1) ~ TabularCPD[[0.09401709401709402,0.1282051282051282,0.07692307692307693,0.10256410256410256,0.08547008547008547,0.20512820512820512,0.3076923076923077]]();
+errorT(e) ~ TabularCPD[[1.0]]();
+groupT(g) ~ TabularCPD[[1.0]]();
+toLocation(a1) ~ TabularCPD[[0.10256410256410256,0.49572649572649574,0.4017094017094017]]();
+actionT(a1) ~ TabularCPD[[0.3076923076923077,0.6923076923076923]]();
+precedes(a1,a2,g,e) ~ TabularCPD[](objActedOn(a1), errorT(e), groupT(g), toLocation(a1), actionT(a1), actionT(a2), objActedOn(a2), toLocation(a2));
+precedes(a1,a2,g,e) ~ TabularCPD[]();

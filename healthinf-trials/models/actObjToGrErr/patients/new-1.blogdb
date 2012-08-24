@@ -1,0 +1,4 @@
+actionT(bla1) = PouringSomethingInto;
+objActedOn(bla1) = Tea-Beverage;
+
+
