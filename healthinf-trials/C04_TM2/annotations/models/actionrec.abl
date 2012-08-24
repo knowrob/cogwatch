@@ -5,16 +5,24 @@
 // types
 // ***************
 
+Type g;
+Type e;
 Type action;
 Type object;
-Type domObjectT;
+Type domObjActedOn;
+Type domErrorT;
+Type domGroupT;
+Type domToLocation;
 Type domActionT;
 
 // ***************
 // domains
 // ***************
 
-guaranteed domObjectT Sweetener1, Sugar, Cup2, LemonSlice, Cup1, Sweetener2, Kettle, TeaBag, Water;
+guaranteed domObjActedOn Sweetener1, Sugar, LemonSlice, Sweetener2, TeaBag, Water;
+guaranteed domErrorT NoError;
+guaranteed domGroupT Patient;
+guaranteed domToLocation Cup2, Cup1, Kettle;
 guaranteed domActionT PouringSomethingInto, PuttingSomethingSomewhere;
 
 
@@ -22,14 +30,18 @@ guaranteed domActionT PouringSomethingInto, PuttingSomethingSomewhere;
 // predicate declarations
 // *************************
 
+// g
+random domGroupT groupT(g);
+
+// e
+random domErrorT errorT(e);
+
 // action
+random domObjActedOn objActedOn(action);
+random domToLocation toLocation(action);
 random domActionT actionT(action);
 
 // object
-random domObjectT objectT(object);
 
 // Relations
-random boolean precedes(action, action);
-random boolean toLocation(action, object);
-random boolean objectActedOn(action, object);
-RelationKey objectActedOn(a0, _);
+random boolean precedes(action, action, g, e);

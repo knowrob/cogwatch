@@ -3,7 +3,7 @@
 <PMML version="3.0" xmlns="http://www.dmg.org/PMML-3_0">
 	<Header copyright="Technische Universitaet Muenchen" />
 	<DataDictionary>
-		<DataField name="objectT(o1)" optype="categorical" id="0">
+		<DataField name="objActedOn(a1)" optype="categorical" id="0">
 			<Extension>
 				<X-NodeType>chance</X-NodeType>
 				<X-Position x="0" y="0" />
@@ -14,7 +14,7 @@
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="actionT(a1)" optype="categorical" id="1">
+		<DataField name="errorT(e)" optype="categorical" id="1">
 			<Extension>
 				<X-NodeType>chance</X-NodeType>
 				<X-Position x="0" y="0" />
@@ -25,37 +25,7 @@
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="precedes(a1, a2)" optype="categorical" id="2">
-			<Extension>
-				<X-NodeType>chance</X-NodeType>
-				<X-Position x="0" y="0" />
-				<X-Definition>
-					<X-Given>1</X-Given> <!-- actionT(a1) -->
-					<X-Given>3</X-Given> <!-- objectActedOn(a1, o1) -->
-					<X-Given>4</X-Given> <!-- #actionT(a2) -->
-					<X-Given>6</X-Given> <!-- #objectActedOn(a2, o2) -->
-					<X-Given>7</X-Given> <!-- !(a1=a2) -->
-					<X-Given>8</X-Given> <!-- !(o1=o2) -->
-					<X-Table>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </X-Table>
-				</X-Definition>
-			</Extension>
-			<Value value="True" />
-			<Value value="False" />
-		</DataField>
-		<DataField name="objectActedOn(a1, o1)" optype="categorical" id="3">
-			<Extension>
-				<X-NodeType>chance</X-NodeType>
-				<X-Position x="0" y="0" />
-				<X-Definition>
-					<X-Given>0</X-Given> <!-- objectT(o1) -->
-					<X-Given>1</X-Given> <!-- actionT(a1) -->
-					<X-Table>0 0 0 0 0 0 0 0 </X-Table>
-				</X-Definition>
-			</Extension>
-			<Value value="True" />
-			<Value value="False" />
-		</DataField>
-		<DataField name="#actionT(a2)" optype="categorical" id="4">
+		<DataField name="groupT(g)" optype="categorical" id="2">
 			<Extension>
 				<X-NodeType>chance</X-NodeType>
 				<X-Position x="0" y="0" />
@@ -66,7 +36,7 @@
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="#objectT(o2)" optype="categorical" id="5">
+		<DataField name="toLocation(a1)" optype="categorical" id="3">
 			<Extension>
 				<X-NodeType>chance</X-NodeType>
 				<X-Position x="0" y="0" />
@@ -77,20 +47,71 @@
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="#objectActedOn(a2, o2)" optype="categorical" id="6">
+		<DataField name="actionT(a1)" optype="categorical" id="4">
 			<Extension>
 				<X-NodeType>chance</X-NodeType>
 				<X-Position x="0" y="0" />
 				<X-Definition>
-					<X-Given>4</X-Given> <!-- #actionT(a2) -->
-					<X-Given>5</X-Given> <!-- #objectT(o2) -->
-					<X-Table>0 0 0 0 0 0 0 0 </X-Table>
+					<X-Table>0 0 </X-Table>
 				</X-Definition>
 			</Extension>
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="!(a1=a2)" optype="categorical" id="7">
+		<DataField name="precedes(a1, a2, g, e)" optype="categorical" id="5">
+			<Extension>
+				<X-NodeType>chance</X-NodeType>
+				<X-Position x="0" y="0" />
+				<X-Definition>
+					<X-Given>0</X-Given> <!-- objActedOn(a1) -->
+					<X-Given>1</X-Given> <!-- errorT(e) -->
+					<X-Given>2</X-Given> <!-- groupT(g) -->
+					<X-Given>3</X-Given> <!-- toLocation(a1) -->
+					<X-Given>4</X-Given> <!-- actionT(a1) -->
+					<X-Given>6</X-Given> <!-- #actionT(a2) -->
+					<X-Given>7</X-Given> <!-- #objActedOn(a2) -->
+					<X-Given>8</X-Given> <!-- #toLocation(a2) -->
+					<X-Given>9</X-Given> <!-- !(a1=a2) -->
+					<X-Table>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </X-Table>
+				</X-Definition>
+			</Extension>
+			<Value value="True" />
+			<Value value="False" />
+		</DataField>
+		<DataField name="#actionT(a2)" optype="categorical" id="6">
+			<Extension>
+				<X-NodeType>chance</X-NodeType>
+				<X-Position x="0" y="0" />
+				<X-Definition>
+					<X-Table>0 0 </X-Table>
+				</X-Definition>
+			</Extension>
+			<Value value="True" />
+			<Value value="False" />
+		</DataField>
+		<DataField name="#objActedOn(a2)" optype="categorical" id="7">
+			<Extension>
+				<X-NodeType>chance</X-NodeType>
+				<X-Position x="0" y="0" />
+				<X-Definition>
+					<X-Table>0 0 </X-Table>
+				</X-Definition>
+			</Extension>
+			<Value value="True" />
+			<Value value="False" />
+		</DataField>
+		<DataField name="#toLocation(a2)" optype="categorical" id="8">
+			<Extension>
+				<X-NodeType>chance</X-NodeType>
+				<X-Position x="0" y="0" />
+				<X-Definition>
+					<X-Table>0 0 </X-Table>
+				</X-Definition>
+			</Extension>
+			<Value value="True" />
+			<Value value="False" />
+		</DataField>
+		<DataField name="!(a1=a2)" optype="categorical" id="9">
 			<Extension>
 				<X-NodeType>decision</X-NodeType>
 				<X-Position x="0" y="0" />
@@ -101,7 +122,7 @@
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="!(o1=o2)" optype="categorical" id="8">
+		<DataField name="a1=a2" optype="categorical" id="10">
 			<Extension>
 				<X-NodeType>decision</X-NodeType>
 				<X-Position x="0" y="0" />
@@ -112,36 +133,13 @@
 			<Value value="True" />
 			<Value value="False" />
 		</DataField>
-		<DataField name="a1=a2" optype="categorical" id="9">
-			<Extension>
-				<X-NodeType>decision</X-NodeType>
-				<X-Position x="0" y="0" />
-				<X-Definition>
-					<X-Table>0 0 </X-Table>
-				</X-Definition>
-			</Extension>
-			<Value value="True" />
-			<Value value="False" />
-		</DataField>
-		<DataField name="o1=o2" optype="categorical" id="10">
-			<Extension>
-				<X-NodeType>decision</X-NodeType>
-				<X-Position x="0" y="0" />
-				<X-Definition>
-					<X-Table>0 0 </X-Table>
-				</X-Definition>
-			</Extension>
-			<Value value="True" />
-			<Value value="False" />
-		</DataField>
-		<DataField name="precedes(a1, a2)" optype="categorical" id="11">
+		<DataField name="precedes(a1, a2, g, e)" optype="categorical" id="11">
 			<Extension>
 				<X-NodeType>chance</X-NodeType>
 				<X-Position x="0" y="0" />
 				<X-Definition>
-					<X-Given>9</X-Given> <!-- a1=a2 -->
-					<X-Given>10</X-Given> <!-- o1=o2 -->
-					<X-Table>0 0 0 0 0 0 0 0 </X-Table>
+					<X-Given>10</X-Given> <!-- a1=a2 -->
+					<X-Table>0 0 0 0 </X-Table>
 				</X-Definition>
 			</Extension>
 			<Value value="True" />
