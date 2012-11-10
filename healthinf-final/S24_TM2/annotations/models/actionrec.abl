@@ -1,0 +1,47 @@
+// Advanced BLOG (ABL) Model
+
+
+// ***************
+// types
+// ***************
+
+Type g;
+Type e;
+Type action;
+Type object;
+Type domObjActedOn;
+Type domErrorT;
+Type domGroupT;
+Type domToLocation;
+Type domActionT;
+
+// ***************
+// domains
+// ***************
+
+guaranteed domObjActedOn CowsMilk-Product, Sugar, Coffee-Beverage, TeaBag;
+guaranteed domErrorT NoError;
+guaranteed domGroupT Patient;
+guaranteed domToLocation Cup2, Cup1;
+guaranteed domActionT PuttingSomethingSomewhere;
+
+
+// *************************
+// predicate declarations
+// *************************
+
+// g
+random domGroupT groupT(g);
+
+// e
+random domErrorT errorT(e);
+
+// action
+random domObjActedOn objActedOn(action);
+random domToLocation toLocation(action);
+random domActionT actionT(action);
+
+// object
+
+// Relations
+random boolean precedes(action, action, g, e);

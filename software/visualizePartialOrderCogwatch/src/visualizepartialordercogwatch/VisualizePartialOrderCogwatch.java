@@ -38,19 +38,31 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 	HashMap<String, Float> probabilities;
 
 
+	String filename    = "actionrec.patients.pmml";
+	
+	String actionT     = "actionT(a1)";
+	String objActedOn  = "objActedOn(a1)";
+	String toLocation  = "toLocation(a1)";
+	String groupT      = "groupT(g)";
+	String errorT      = "errorT(e)";
 
-
+	String precedes = "precedes(a1, a2, g, e)";
+	int numPrecParents = 8;	
+	
 	////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void setup() {
 
-		size(600, 600);  
+		size(600, 600);
 		font = createFont("SansSerif", 10);
 		domains = new HashMap<String, ArrayList<String>>();
 		probabilities = new HashMap<String, Float>();
 
-
+		String selected = selectInput("Please select a .pmml file to be visualized");
+		if(selected!=null && !selected.isEmpty())
+			filename = selected;
+		
 		loadData();
 
 		////////////////////////////////////////////////
@@ -199,21 +211,7 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 	////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////
 
-	//String filename = "segm.learnt.pmml";
-	//String actionT  = "segmentT(s1)";
-	//String precedes = "precedes(s1, s2)";
-	//int numPrecParents = 2;
 
-
-	String filename    = "actionrec.patients.pmml";
-	String actionT     = "actionT(a1)";
-	String objActedOn  = "objActedOn(a1)";
-	String toLocation  = "toLocation(a1)";
-	String groupT      = "groupT(g)";
-	String errorT      = "errorT(e)";
-
-	String precedes = "precedes(a1, a2, g, e)";
-	int numPrecParents = 8;
 
 	public void loadData() {
 
@@ -451,5 +449,7 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 	}
 
 
-
+	public static void main(String[] args) {
+		PApplet.main(new String[] { "visualizepartialordercogwatch.VisualizePartialOrderCogwatch" });
+	}
 }

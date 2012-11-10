@@ -1,0 +1,58 @@
+
+# list mappings between internal IDs and 
+# displayed text for each category
+label-categories:
+  actionIDs : Actions
+  obj1IDs : Objects_1
+  prepIDs : Prepositions
+  obj2IDs : Objects_2
+
+# Define which class denotes the action (becomes main index)
+action-category: actionIDs
+
+# define domain of label entries for each category
+label-values:
+  actionIDs:
+  - None
+  - Put
+  - Pour
+  - Grasp
+  - Remove
+  obj1IDs:
+  - None
+  - cup1
+  - cup2
+  - kettle
+  - water
+  - milk
+  - lemon
+  - sweetener1
+  - sweetener2
+  - sugar
+  - teabag
+  - tea
+  - waterjug
+  - coffeejar
+  - coffee
+  prepIDs:
+  - None
+  - in
+  - into
+  - from
+  obj2IDs:
+  - None
+  - cup1
+  - cup2
+  - kettle
+  - water
+  - milk
+  - lemon
+  - sweetener1
+  - sweetener2
+  - sugar
+  - teabag
+  - tea
+  - waterjug
+  - coffeejar
+  - coffee
+

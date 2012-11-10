@@ -1,0 +1,13 @@
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup1
+21 30 Put-sugar-in-cup1
+31 40 Put-coffee-in-cup2
+41 50 Put-milk-in-cup2
+51 60 Pour-water-in-cup2
+61 70 Remove-coffee-from-cup2
+71 80 Remove-milk-from-cup2
+81 90 Remove-water-from-cup2
+91 100 Put-teabag-in-cup2
+101 110 Pour-water-on-cup2
+111 120 Put-milk-in-cup2
+121 130 Put-teabag-in-cup1
