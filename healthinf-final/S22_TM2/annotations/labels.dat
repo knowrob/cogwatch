@@ -1,8 +1,8 @@
 1 10 Pour-water-in-kettle
-11 20 Put-teabag-in-cup2
+20 11 Put-teabag-in-cup2
 21 30 Put-teabag-in-cup1
 31 40 Put-sweetener1-in-cup1
-41 50 Put
+41 50 Put sweetener2-in-cup1
 51 60 Put-milk-in-cup1
 61 70 Pour-water-in-cup1
 71 80 Pour-water-in-cup2

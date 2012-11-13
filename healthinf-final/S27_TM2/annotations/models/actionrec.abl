@@ -1,0 +1,50 @@
+// ABL Model
+
+
+// ***************
+// object types
+// ***************
+
+type g;
+type e;
+type action;
+type object;
+
+// ***************
+// domains
+// ***************
+
+type domObjActedOn;
+guaranteed domObjActedOn Sugar, CowsMilkProduct, CoffeeBeverage, TeaBag, Water;
+type domErrorT;
+guaranteed domErrorT NoError;
+type domGroupT;
+guaranteed domGroupT Patient;
+type domFromLocation;
+guaranteed domFromLocation Cup2;
+type domFromLocation;
+guaranteed domFromLocation Cup2;
+type domActionT;
+guaranteed domActionT RemovingSomething, PouringSomethingInto, PuttingSomethingSomewhere;
+
+
+// *************************
+// function/predicate declarations
+// *************************
+
+// g
+random domGroupT groupT(g);
+
+// e
+random domErrorT errorT(e);
+
+// action
+random domObjActedOn objActedOn(action);
+random domFromLocation fromLocation(action);
+random domFromLocation toLocation(action);
+random domActionT actionT(action);
+
+// object
+
+// Relations
+random boolean precedes(action, action, g, e);

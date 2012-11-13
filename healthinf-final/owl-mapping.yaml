@@ -5,14 +5,14 @@ classes:
   Grasp : GraspingSomething
   kettle : Kettle
   water : Water
-  milk : CowsMilk-Product
+  milk : CowsMilkProduct
   lemon : LemonSlice
   sugar : Sugar
   teabag : TeaBag
-  tea : Tea-Beverage
+  tea : TeaBeverage
   waterjug : WaterJug
   coffeejar : CoffeeJar
-  coffee : Coffee-Beverage
+  coffee : CoffeeBeverage
 properties:
   with : primaryObjectMoving
   into : toLocation

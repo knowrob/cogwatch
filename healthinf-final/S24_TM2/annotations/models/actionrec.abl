@@ -1,33 +1,33 @@
-// Advanced BLOG (ABL) Model
+// ABL Model
 
 
 // ***************
-// types
+// object types
 // ***************
 
-Type g;
-Type e;
-Type action;
-Type object;
-Type domObjActedOn;
-Type domErrorT;
-Type domGroupT;
-Type domToLocation;
-Type domActionT;
+type g;
+type e;
+type action;
+type object;
 
 // ***************
 // domains
 // ***************
 
-guaranteed domObjActedOn CowsMilk-Product, Sugar, Coffee-Beverage, TeaBag;
+type domObjActedOn;
+guaranteed domObjActedOn Sugar, CowsMilkProduct, CoffeeBeverage, TeaBag;
+type domErrorT;
 guaranteed domErrorT NoError;
+type domGroupT;
 guaranteed domGroupT Patient;
+type domToLocation;
 guaranteed domToLocation Cup2, Cup1;
+type domActionT;
 guaranteed domActionT PuttingSomethingSomewhere;
 
 
 // *************************
-// predicate declarations
+// function/predicate declarations
 // *************************
 
 // g
