@@ -21,9 +21,9 @@ guaranteed domErrorT NoError;
 type domGroupT;
 guaranteed domGroupT Patient;
 type domFromLocation;
-guaranteed domFromLocation Cup2;
+guaranteed domFromLocation Cup2, No_from;
 type domFromLocation;
-guaranteed domFromLocation Cup2;
+guaranteed domFromLocation Cup2, No_from;
 type domActionT;
 guaranteed domActionT RemovingSomething, PouringSomethingInto, PuttingSomethingSomewhere;
 

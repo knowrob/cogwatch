@@ -15,13 +15,15 @@ type object;
 // ***************
 
 type domObjActedOn;
-guaranteed domObjActedOn Sweetener1, Sugar, LemonSlice, CowsMilkProduct, TeaBag, Water;
+guaranteed domObjActedOn Sweetener1, Sugar, LemonSlice, CowsMilkProduct, No_obj, TeaBag, Water;
 type domErrorT;
 guaranteed domErrorT NoError;
 type domGroupT;
 guaranteed domGroupT Patient;
+type domFromLocation;
+guaranteed domFromLocation No_from;
 type domToLocation;
-guaranteed domToLocation Cup2, Cup1, Kettle, None;
+guaranteed domToLocation Cup2, Cup1, Kettle, No_to;
 type domActionT;
 guaranteed domActionT PouringSomethingInto, PuttingSomethingSomewhere;
 
@@ -38,6 +40,7 @@ random domErrorT errorT(e);
 
 // action
 random domObjActedOn objActedOn(action);
+random domFromLocation fromLocation(action);
 random domToLocation toLocation(action);
 random domActionT actionT(action);
 

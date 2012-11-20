@@ -1,0 +1,242 @@
+./S01_TM1/annotations/labels.dat
+1 10 Put-sweetener1-in-cup1
+11 20 Pour-milk-in-cup1
+21 30 Put-sugar-in-cup2
+31 40 Put-lemon-in-cup2
+41 50 Pour-water-in-cup1
+51 60 Put-lemon-in-cup1
+61 70 Pour-water-in-kettle
+71 80 Pour-water-in-cup2
+81 90 Put-lemon-in-cup2
+91 100 Put-teabag-in-cup2
+./S01_TM2/annotations/labels.dat
+1 10 Pour-water-in-cup2
+11 20 Pour-water-in-cup1
+21 30 Put-sugar-in-cup1
+31 40 Put-sugar-in-cup2
+41 50 Put-lemon-in-cup2
+51 60 Put-sweetener1-in-cup1
+61 70 Pour-milk-in-cup1
+./S02_TM/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-teabag-in-waterjug
+21 30 Put-teabag-in-waterjug
+31 40 Pour-water-in-waterjug
+41 50 Pour-tea-in-cup1
+51 60 Pour-tea-in-cup2
+61 70 Put-sugar-in-cup2
+71 80 Put-lemon-in-cup2
+81 90 Put-sweetener1-in-cup1
+91 100 Put-sweetener2-in-cup1
+./S03_TM/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-teabag-in-cup1
+21 30 Put-teabag-in-cup2
+31 40 Put-sweetener1-in-cup1
+41 50 Put-sweetener2-in-cup1
+51 60 Put-sugar-in-cup1
+61 70 Pour-water-in-cup2
+71 80 Pour-water-in-cup1
+81 90 Pour-milk-in-cup1
+./S04_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-teabag-in-cup2
+21 30 Put-coffee-in-cup1
+31 40 Pour-water-in-cup2
+41 50 Pour-water-in-cup1
+51 60 Put-lemon-in-cup2
+61 70 Put-sugar-in-cup2
+71 80 Pour-milk-in-cup1
+81 90 Put-sweetener1-in-cup1
+./S04_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-teabag-in-cup1
+21 30 Put-teabag-in-cup2
+31 40 Put-sweetener1-in-cup1
+41 50 Put-sweetener2-in-cup1
+51 60 Pour-water-in-cup1
+61 70 Pour-water-in-cup2
+71 80 Pour-milk-in-cup1
+81 90 Put-lemon-in-cup2
+91 100 Put-sugar-in-cup2
+./S16_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup2
+21 30 Pour-water-in-cup1
+31 40 Put-teabag-in-cup1
+41 50 Put-teabag-in-cup2
+51 60 Pour-milk-in-cup1
+61 70 Put-sugar-in-cup1
+71 90 Put-lemon-in-cup2
+91 100 Put-sugar-in-cup2
+./S16_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-teabag-in-cup2
+21 30 Put-teabag-in-cup1
+31 40 Pour-water-in-cup2
+41 50 Pour-water-in-cup1
+51 60 Put-lemon-in-cup2
+61 70 Put-sugar-in-cup2
+71 80 Pour-milk-in-cup1
+81 90 Put-sweetener1-in-cup1
+91 100 Put-sweetener2-in-cup1
+./S19_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-coffee-in-cup1
+21 30 Pour-water-in-cup1
+31 40 Pour-water-in-cup2
+41 50 Put-teabag-in-cup2
+51 60 Put-sweetener1-in-cup1
+61 70 Put-sweetener2-in-cup1
+71 80 Put-sugar-in-cup2
+81 90 Put-lemon-in-cup2
+./S19_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-sugar-in-cup2
+21 30 Put-sweetener1-in-cup1
+31 40 Put-sweetener2-in-cup1
+41 50 Put-lemon-in-cup2
+51 60 Pour-milk-in-cup1
+61 70 Put-teabag-in-cup2
+71 80 Put-teabag-in-cup1
+81 90 Pour-water-in-cup2
+91 100 Pour-water-in-cup1
+./S20_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup2
+21 30 Pour-water-in-cup1
+31 40 Put-coffee-in-cup2
+41 50 Put-sugar-in-cup2
+51 60 Put-lemon-in-cup2
+61 70 Put-teabag-in-cup1
+71 80 Put-sweetener1-in-cup1
+81 90 Put-sweetener2-in-cup1
+91 100 Pour-milk-in-cup1
+./S20_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-sugar-in-cup2
+21 30 Put-lemon-in-cup2
+31 40 Pour-milk-in-cup1
+41 50 Put-sweetener1-in-cup1
+51 60 Put-sweetener2-in-cup1
+61 70 Pour-water-in-cup2
+71 80 Pour-water-in-cup1
+81 90 Put-teabag-in-cup2
+91 100 Put-teabag-in-cup1
+./S21_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup2
+21 30 Pour-water-in-cup1
+31 40 Put-teabag-in-cup2
+41 50 Put-sugar-in-cup2
+51 60 Put-teabag-in-cup1
+61 70 Put-sweetener1-in-cup1
+71 80 Pour-milk-in-cup1
+81 90 Put-lemon-in-cup2
+91 100 Put-sweetener2-in-cup1
+./S21_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup2
+21 30 Pour-water-in-cup1
+31 40 Put-teabag-in-cup2
+41 50 Put-sugar-in-cup2
+51 60 Put-lemon-in-cup2
+61 70 Put-teabag-in-cup1
+71 80 Put-sweetener1-in-cup1
+81 90 Put-sweetener2-in-cup2
+91 100 Pour-milk-in-cup1
+./S22_TM1/annotations/labels.dat
+1 10 Put-teabag-in-cup2
+11 20 Put-teabag-in-cup1
+21 30 Pour-water-in-kettle
+31 40 Pour-water-in-cup2
+41 50 Put-lemon-in-cup2
+51 60 Put-sugar-in-cup2
+61 70 Pour-milk-in-cup1
+71 80 Put-sweetener1-in-cup1
+81 90 Put-sweetener2-in-cup1
+./S22_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+20 11 Put-teabag-in-cup2
+21 30 Put-teabag-in-cup1
+31 40 Put-sweetener1-in-cup1
+41 50 Put sweetener2-in-cup1
+51 60 Pour-milk-in-cup1
+61 70 Pour-water-in-cup1
+71 80 Pour-water-in-cup2
+81 90 Put-sugar-in-cup2
+91 100 Put-lemon-in-cup2
+./S23_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-teabag-in-cup2
+21 30 Put-teabag-in-cup1
+31 40 Put-sweetener1-in-cup1
+41 50 Put-sweetener2-in-cup1
+51 60 Pour-milk-in-cup1
+61 70 Pour-water-in-cup1
+71 80 Pour-water-in-cup2
+81 90 Put-sugar-in-cup2
+91 100 Put-lemon-in-cup2
+./S23_TM2/annotations/labels.dat
+1 10 Pour-milk-in-cup1
+11 20 Put-sweetener1-in-cup1
+21 30 Put-sweetener2-in-cup1
+31 40 Put-sugar-in-cup2
+41 50 Put-lemon-in-cup2
+51 60 Pour-water-in-kettle
+61 70 Put-lemon-in-cup2
+71 80 Pour-water-in-cup2
+81 90 Pour-water-in-cup1
+91 100 Put-teabag-in-cup1
+101 110 Put-teabag-in-cup1
+./S24_TM1/annotations/labels.dat
+1 10 Pour-water-in-cup2
+11 20 Put-sugar-in-cup2
+21 30 Put-teabag-in-cup2
+31 40 Put-teabag-in-cup1
+41 50 Pour-milk-in-cup1
+51 60 Put-sugar-in-cup1
+61 70 Put-sugar-in-cup1
+./S24_TM2/annotations/labels.dat
+1 10 Put-sugar-in-cup2
+11 20 Put-teabag-in-cup2
+21 30 Put-coffee-in-cup1
+31 40 Pour-milk-in-cup1
+./S25_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup2
+21 30 Pour-water-in-cup1
+31 40 Put-teabag-in-cup2
+41 50 Put-sugar-in-cup2
+51 60 Put-lemon-in-cup2
+61 70 Put-teabag-in-cup1
+71 80 Pour-milk-in-cup1
+81 90 Put-sweetener1-in-cup1
+91 100 Put-sweetener2-in-cup1
+./S25_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-water-in-cup2
+21 30 Pour-water-in-cup1
+31 40 Put-teabag-in-cup2
+41 50 Put-sugar-in-cup2
+51 60 Put-teabag-in-cup1
+61 70 Put-sweetener1-in-cup1
+71 80 Put-sweetener2-in-cup1
+./S26_TM1/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Pour-milk-in-cup1
+21 30 Put-sweetener1-in-cup1
+31 40 Put-sweetener2-in-cup1
+41 50 Put-sugar-in-cup2
+51 60 Pour-water-in-cup2
+61 70 Pour-water-in-cup1
+71 80 Put-lemon-in-cup2
+./S26_TM2/annotations/labels.dat
+1 10 Pour-water-in-kettle
+11 20 Put-lemon-in-cup2
+21 30 Put-sugar-in-cup2
+31 40 Put-sweetener1-in-cup1
+41 50 Put-sweetener2-in-cup2
+51 60 Pour-milk-in-cup1
+61 70 Pour-water-in-cup2
+71 80 Pour-water-in-cup1
