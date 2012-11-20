@@ -1,16 +1,11 @@
 package visualizepartialordercogwatch;
 
-import java.sql.Array;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import processing.core.PApplet;
 import processing.core.PFont;
 
-import processing.pdf.*;
 import processing.xml.XMLElement;
 
 public class VisualizePartialOrderCogwatch extends PApplet {
@@ -35,7 +30,7 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 
 
 	HashMap<String, ArrayList<String>> domains;
-	HashMap<String, Float> probabilities;
+	HashMap<String, HashMap<String, Float>> probabilities; // format: (domainID->(key->val)), e.g. (actionT(a1)->(none->0.0))
 
 
 	String filename    = "actionrec.patients.pmml";
@@ -43,6 +38,7 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 	String actionT     = "actionT(a1)";
 	String objActedOn  = "objActedOn(a1)";
 	String toLocation  = "toLocation(a1)";
+	String fromLocation  = "fromLocation(a1)";
 	String groupT      = "groupT(g)";
 	String errorT      = "errorT(e)";
 
@@ -55,9 +51,11 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 	public void setup() {
 
 		size(600, 600);
+		frameRate(5);
+		
 		font = createFont("SansSerif", 10);
 		domains = new HashMap<String, ArrayList<String>>();
-		probabilities = new HashMap<String, Float>();
+		probabilities = new HashMap<String, HashMap<String,Float>>();
 
 		String selected = selectInput("Please select a .pmml file to be visualized");
 		if(selected!=null && !selected.isEmpty())
@@ -143,7 +141,7 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 		smooth();  
 
 
-		float prob_threshold = 0.002f;
+		float prob_threshold = 0.000002f;
 
 		for (int i = 0 ; i < edges.size() ; i++) {
 
@@ -233,6 +231,7 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 			readDomain(toLocation, datadict);
 			readDomain(errorT, datadict);
 			readDomain(groupT, datadict);
+			readDomain(fromLocation, datadict);
 
 			// TODO: create separate graphs for each activity
 
@@ -261,10 +260,8 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 										String[] cpt = ext.getChild(x).getChild(xx).getContent().split(" ");
 
 										// iterate across the table of conditional probabilities and link the nodes accordingly 
-										int numNodes = nodeTable.keySet().size();
-										int numActivities=2;
 
-
+										// healthinf-trials
 										//	<X-Given>0</X-Given> <!-- objActedOn(a1) -->
 										//	<X-Given>1</X-Given> <!-- errorT(e) -->
 										//	<X-Given>2</X-Given> <!-- groupT(g) -->
@@ -274,68 +271,181 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 										//	<X-Given>7</X-Given> <!-- #objActedOn(a2) -->
 										//	<X-Given>8</X-Given> <!-- #toLocation(a2) -->
 										//	<X-Given>9</X-Given> <!-- !(a1=a2) -->
+										// int blocksize_obj1    = domains.get(errorT).size() * domains.get(groupT).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size() * domains.get(toLocation).size();
+										// int blocksize_error   = domains.get(groupT).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
+										// int blocksize_group   = domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
+										// int blocksize_toLoc1  = domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
+										// int blocksize_action1 = domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
+										// int blocksize_action2 = domains.get(objActedOn).size()  * domains.get(toLocation).size();
+										// int blocksize_obj2    = domains.get(toLocation).size();
+										// int blocksize_toLoc2  = 1;
+										
+										
+										// healthinf-finals (incl. fromlocation)
+//										<X-Given>0</X-Given> <!-- objActedOn(a1) -->
+//										<X-Given>1</X-Given> <!-- errorT(e) -->
+//										<X-Given>2</X-Given> <!-- groupT(g) -->
+//										<X-Given>3</X-Given> <!-- fromLocation(a1) -->
+//										<X-Given>4</X-Given> <!-- toLocation(a1) -->
+//										<X-Given>5</X-Given> <!-- actionT(a1) -->
+//										<X-Given>7</X-Given> <!-- #actionT(a2) -->
+//										<X-Given>8</X-Given> <!-- #objActedOn(a2) -->
+//										<X-Given>9</X-Given> <!-- #toLocation(a2) -->
+//										<X-Given>10</X-Given> <!-- #fromLocation(a2) -->
+//										<X-Given>11</X-Given> <!-- !(a1=a2) -->
+										int blocksize_obj1     = domains.get(errorT).size() * domains.get(groupT).size() * domains.get(fromLocation).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size() * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_error    = domains.get(groupT).size() * domains.get(fromLocation).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_group    = domains.get(fromLocation).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_fromLoc1 = domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_toLoc1   = domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_action1  = domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_action2  = domains.get(objActedOn).size()  * domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_obj2     = domains.get(toLocation).size() * domains.get(fromLocation).size();
+										int blocksize_toLoc2   = domains.get(fromLocation).size();
+										int blocksize_fromLoc2 = 1;
+										
+										System.err.println("CPT size: " + cpt.length ); 
+												
+										System.err.println("Domain sizes: " + domains.get(objActedOn).size() * 
+												domains.get(errorT).size() * 
+												domains.get(groupT).size() * 
+												domains.get(fromLocation).size() * 
+												domains.get(toLocation).size() * 
+												domains.get(actionT).size() *
+												domains.get(actionT).size() *
+												domains.get(objActedOn).size() * 
+												domains.get(fromLocation).size() *
+												domains.get(toLocation).size());
+										
 
-
-										int blocksize_obj1    = domains.get(errorT).size() * domains.get(groupT).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size() * domains.get(toLocation).size();
-										int blocksize_error   = domains.get(groupT).size() * domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
-										int blocksize_group   = domains.get(toLocation).size() * domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
-										int blocksize_toLoc1  = domains.get(actionT).size() * domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
-										int blocksize_action1 = domains.get(actionT).size() * domains.get(objActedOn).size()  * domains.get(toLocation).size();
-										int blocksize_action2 = domains.get(objActedOn).size()  * domains.get(toLocation).size();
-										int blocksize_obj2    = domains.get(toLocation).size();
-										int blocksize_toLoc2  = 1;
-
-
-										for(int obj1=0; obj1<domains.get(objActedOn).size(); obj1++) {  											 // #elem 10
+										for(int obj1=0; obj1<domains.get(objActedOn).size(); obj1++) {  									 	// #elem 10
 											for(int error=0; error<domains.get(errorT).size(); error++) {										 // #elem 1
 												for(int group=0; group<domains.get(groupT).size(); group++) {									 // #elem 1
-													for(int toLoc1=0; toLoc1<domains.get(toLocation).size(); toLoc1++) {						 // #elem 5
-														for(int action1=0; action1<domains.get(actionT).size(); action1++) {					 // #elem 3
-															for(int action2=0; action2<domains.get(actionT).size(); action2++) {				 // #elem 3
-																for(int obj2=0; obj2<domains.get(objActedOn).size() ; obj2++) {					 // #elem 10
-																	for(int toLoc2=0; toLoc2<domains.get(toLocation).size(); toLoc2++) {		 // #elem 5
+													for(int fromLoc1=0; fromLoc1<domains.get(fromLocation).size(); fromLoc1++) {
+														for(int toLoc1=0; toLoc1<domains.get(toLocation).size(); toLoc1++) {						 // #elem 5
+															for(int action1=0; action1<domains.get(actionT).size(); action1++) {					 // #elem 3
+																for(int action2=0; action2<domains.get(actionT).size(); action2++) {				 // #elem 3
+																	for(int obj2=0; obj2<domains.get(objActedOn).size() ; obj2++) {					 // #elem 10
+																		for(int fromLoc2=0; fromLoc2<domains.get(fromLocation).size(); fromLoc2++) {		 // #elem 5
+																			for(int toLoc2=0; toLoc2<domains.get(toLocation).size(); toLoc2++) {		 // #elem 5
 
 
-																		// total: 22500 blocks in the CPT, each block four numbers ((a1=a2) plus true/false)
+																				// total: 1 166 400 blocks in the CPT, each block four numbers ((a1=a2) plus true/false)
 
-																		// TODO: modify this loop to take the different parents into account
-																		//       -> also read labels for parents and add separate nodes for each combination
+																				// TODO: modify this loop to take the different parents into account
+																				//       -> also read labels for parents and add separate nodes for each combination
 
 
-																		float condA1A2 = Float.valueOf(cpt[ 4* (obj1    * blocksize_obj1 + 
-																				error   * blocksize_error + 
-																				group   * blocksize_group + 
-																				toLoc1  * blocksize_toLoc1 +
-																				action1 * blocksize_action1 +
-																				action2 * blocksize_action2 +
-																				obj2    * blocksize_obj2 +
-																				toLoc2  * blocksize_toLoc2)] );
+																				float condA1A2 = Float.valueOf(cpt[ 4* (obj1    * blocksize_obj1 + 
+																						error    * blocksize_error + 
+																						group    * blocksize_group + 
+																						fromLoc1 * blocksize_fromLoc1 +
+																						toLoc1   * blocksize_toLoc1 +
+																						action1  * blocksize_action1 +
+																						action2  * blocksize_action2 +
+																						obj2     * blocksize_obj2 +
+																						fromLoc2 * blocksize_fromLoc2 +
+																						toLoc2   * blocksize_toLoc2)] );
 
-																		if(condA1A2>0.0) {
+																				if(condA1A2>0.0) {
 
-																			// search for nodes, create if don't exist yet
+																					// search for nodes, create if don't exist yet
+																					Node from = null;
 
-																			Node from = this.findNode(
-																					domains.get(actionT).get(action1) + " " + 
-																					domains.get(objActedOn).get(obj1) + " to " +
-																					domains.get(toLocation).get(toLoc1));
+																					// use toLocation only if not empty
+																					if(!domains.get(toLocation).get(toLoc1).equals("No_from") && !domains.get(toLocation).get(toLoc1).equals("No_to")) {
+																						
+																						from = this.findNode(
+																								domains.get(actionT).get(action1) + " " + 
+																										domains.get(objActedOn).get(obj1) + " to " +
+																										domains.get(toLocation).get(toLoc1));
 
-																			from.prob = probabilities.get(domains.get(actionT).get(action1)) *
-																			probabilities.get(domains.get(objActedOn).get(obj1)) *
-																			probabilities.get(domains.get(toLocation).get(toLoc1));
+																						from.prob = probabilities.get(actionT).get(domains.get(actionT).get(action1)) *
+																								probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj1)) *
+																								probabilities.get(toLocation).get(domains.get(toLocation).get(toLoc1));
+																						
 
-																			Node to = this.findNode(
-																					domains.get(actionT).get(action2) + " " + 
-																					domains.get(objActedOn).get(obj2) + " to " +
-																					domains.get(toLocation).get(toLoc2));
+																						if(from.prob > 0.000002) {
+																							System.err.println(from.getName() + ": " + probabilities.get(actionT).get(domains.get(actionT).get(action1)) + " * " +
+																									probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj1)) + " * "+
+																									probabilities.get(toLocation).get(domains.get(toLocation).get(toLoc1)));
+																						}
+																						
+																						
+																					} else if(!domains.get(fromLocation).get(fromLoc1).equals("No_from") && !domains.get(fromLocation).get(fromLoc1).equals("No_to")) {
+																						
+																						from = this.findNode(
+																								domains.get(actionT).get(action1) + " " + 
+																										domains.get(objActedOn).get(obj1) + " from " +
+																										domains.get(fromLocation).get(fromLoc1));
 
-																			to.prob = 	probabilities.get(domains.get(actionT).get(action2)) *
-																			probabilities.get(domains.get(objActedOn).get(obj2)) *
-																			probabilities.get(domains.get(toLocation).get(toLoc2));
+																						from.prob = probabilities.get(actionT).get(domains.get(actionT).get(action1)) *
+																								probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj1)) *
+																								probabilities.get(fromLocation).get(domains.get(fromLocation).get(fromLoc1));
+																						
 
-																			this.addEdge(from.label, to.label, condA1A2);
+																						if(from.prob > 0.000002) {
+																							System.err.println(from.getName() + ": " + probabilities.get(actionT).get(domains.get(actionT).get(action1)) + " * " +
+																									probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj1)) + " * "+
+																									probabilities.get(fromLocation).get(domains.get(fromLocation).get(fromLoc1)));
+																						}
+																						
+																					}
+																					
+																					if(from!=null)
+																						System.err.println(from.getName() + ": " + from.prob);
+																					
+																					
+																					Node to = null;
+																					if(!domains.get(toLocation).get(toLoc2).equals("No_from") && !domains.get(toLocation).get(toLoc2).equals("No_to")) {
+
+																						to = this.findNode(
+																								domains.get(actionT).get(action2) + " " + 
+																										domains.get(objActedOn).get(obj2) + " to " +
+																										domains.get(toLocation).get(toLoc2));
+	
+																						to.prob = 	probabilities.get(actionT).get(domains.get(actionT).get(action2)) *
+																								probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj2)) *
+																								probabilities.get(toLocation).get(domains.get(toLocation).get(toLoc2));
+																						
+
+																						if(to.prob > 0.000002) {
+																							System.err.println(to.getName() + ": " + probabilities.get(actionT).get(domains.get(actionT).get(action2)) + " * " +
+																									probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj2)) + " * "+
+																									probabilities.get(toLocation).get(domains.get(toLocation).get(toLoc2)));
+																						}
+																						
+																					} else if(!domains.get(fromLocation).get(fromLoc2).equals("No_from") && !domains.get(fromLocation).get(fromLoc2).equals("No_to")) {
+																						
+																						to = this.findNode(
+																								domains.get(actionT).get(action2) + " " + 
+																										domains.get(objActedOn).get(obj2) + " from " +
+																										domains.get(fromLocation).get(fromLoc2));
+
+																						to.prob = 	probabilities.get(actionT).get(domains.get(actionT).get(action2)) *
+																								probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj2)) *
+																								probabilities.get(fromLocation).get(domains.get(fromLocation).get(fromLoc2));
+																						
+
+																						if(to.prob > 0.000002) {
+																							System.err.println(to.getName() + ": " + probabilities.get(actionT).get(domains.get(actionT).get(action2)) + " * " +
+																									probabilities.get(objActedOn).get(domains.get(objActedOn).get(obj2)) + " * "+
+																									probabilities.get(fromLocation).get(domains.get(fromLocation).get(fromLoc2)));
+																						}
+																					}
+																					
+
+																					if(to!=null) {
+																						System.err.println(to.getName() + ": " + to.prob);
+//																						System.err.println(to.getName() + ": " probabilities.get(domains.get(actionT).get(action2)));
+																					}
+																					
+																					if(from!=null && to !=null)
+																						this.addEdge(from.label, to.label, condA1A2);
+																				}
+
+																			}
 																		}
-
 																	}
 																}
 															}
@@ -393,8 +503,11 @@ public class VisualizePartialOrderCogwatch extends PApplet {
 						if(!this.domains.containsKey(element))
 							this.domains.put(element, new ArrayList<String>());
 
+						if(!this.probabilities.containsKey(element))
+							this.probabilities.put(element, new HashMap<String, Float>());
+						
 						this.domains.get(element).add(datadict.getChild(df).getChild(val).getStringAttribute("value"));
-						this.probabilities.put(datadict.getChild(df).getChild(val).getStringAttribute("value"), prob);
+						this.probabilities.get(element).put(datadict.getChild(df).getChild(val).getStringAttribute("value"), prob);
 					}
 				}
 

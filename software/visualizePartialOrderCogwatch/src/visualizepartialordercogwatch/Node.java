@@ -10,7 +10,7 @@ public class Node {
 	boolean fixed;
 	String label;
 	int count;
-	float prob;
+	double prob;
 	private VisualizePartialOrderCogwatch app;
 
 	Node(String label, VisualizePartialOrderCogwatch applet) {
@@ -21,49 +21,13 @@ public class Node {
 
 	}
 
-	void setProb(float p) {
+	void setProb(double p) {
 		this.prob=p;
 		this.count=20;
 	}
 
-	void increment() {
-		count+=20;
-	}
-
 	String getName() {
 		return this.label;
-	}
-
-
-	void relax() {
-		float ddx = 0;
-		float ddy = 0;
-
-		for (int j = 0; j < app.nodes.size(); j++) {
-			Node n = app.nodes.get(j);
-			if (n != this) {
-				float vx = x - n.x;
-				float vy = y - n.y;
-				float lensq = vx * vx + vy * vy;
-				if (lensq == 0) {
-					ddx += app.random(1);
-					ddy += app.random(1);
-				} else if (lensq < 100*100) {
-					ddx += vx / lensq;
-					ddy += vy / lensq;
-				}
-			}
-		}
-		float dlen = PApplet.mag(ddx, ddy) / 2;
-		if (dlen > 0) {
-			dx += ddx / dlen;
-			dy += ddy / dlen;
-		}
-	}
-
-
-	void update() {
-
 	}
 
 
@@ -75,13 +39,21 @@ public class Node {
 		app.strokeWeight(1);
 
 
-		app.fill(255, 200, 50);
-		app.sphere(100000*prob);
-		app.ellipse(x, y, 4000*prob, 600*prob);
+		app.fill(255, 200, 50, 200);
+//		app.sphere(((float) (1000000000*prob)));
+		app.ellipse(x, y, (float)(4000*prob), (float)(600*prob));
 
 		//	    if (count > w+2) {
 		app.fill(0);
 		app.textAlign(PConstants.CENTER, PConstants.CENTER);
+
+		label = label.replace("CowsMilkProduct", "Milk");
+		label = label.replace("PuttingSomethingSomewhere", "Put");
+		label = label.replace("PouringSomethingInto",      "Pour");
+		label = label.replace("RemovingSomething",      "Remove");
+		label = label.replace("CoffeeBeverage",      "Coffee");
+		label = label.replace("TeaBeverage",      "Tea");
+		
 		app.text(label, x, y);
 		//	    }
 	}

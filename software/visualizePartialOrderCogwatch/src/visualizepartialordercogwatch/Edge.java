@@ -48,7 +48,7 @@ public class Edge {
 		app.stroke(0);    
 		app.noFill();
 		
-		float stroke = 3000000*prob * from.prob * from.prob;
+		float stroke = (float) (40000000*prob * from.prob * to.prob);
 		app.strokeWeight(stroke);
 
 		
@@ -70,9 +70,9 @@ public class Edge {
 		app.line(from.x, from.y, p_to.x, p_to.y);
 		float a = (float)Math.atan2(p_to.y-from.y, p_to.x-from.x);
 		
-		a -= (float) Math.PI / 8f;
+		a -= (float) Math.PI / 12f;
 		app.line(p_to.x, p_to.y, -(float) Math.cos(a)*20 + p_to.x, -(float)Math.sin(a)*20 + p_to.y);
-		a += (float) Math.PI / 4f;
+		a += (float) Math.PI / 6f;
 		app.line(p_to.x, p_to.y, -(float) Math.cos(a)*20 + p_to.x, -(float)Math.sin(a)*20 + p_to.y);
 		
 	}
